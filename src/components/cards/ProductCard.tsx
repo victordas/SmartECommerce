@@ -5,7 +5,14 @@ import { AppColors, AppFonts, commonStyles } from "../../styles";
 import { AppText } from "../texts/AppText";
 import { Ionicons } from "@expo/vector-icons";
 
-const ProductCard = () => {
+interface ProductCardProps {
+    imageUrl: string,
+    onAddToCartPress: () => void,
+    price: string,
+    title: string
+}
+
+const ProductCard = (productCardProps: ProductCardProps) => {
   const {
     addToCartButton,
     container,
@@ -15,22 +22,29 @@ const ProductCard = () => {
     priceText,
     titleText,
   } = styles;
+
+  const { imageUrl, onAddToCartPress, price, title } = productCardProps;
   return (
     <View style={container}>
       {/** Add to cart button */}
-      <TouchableOpacity style={addToCartButton}>
+      <TouchableOpacity 
+      style={addToCartButton}
+      onPress={onAddToCartPress}
+      >
         <Ionicons name="cart" size={s(15)} color={AppColors.white} />
       </TouchableOpacity>
 
       {/** Image UI */}
       <View style={imageContainer}>
-        <Image style={image} />
+        <Image style={image} source={{
+            uri: imageUrl
+        }} />
       </View>
 
       {/** Details */}
       <View style={detailsContainer}>
-        <AppText style={titleText}>Victor</AppText>
-        <AppText style={priceText}>Priceless</AppText>
+        <AppText style={titleText}>{title}</AppText>
+        <AppText style={priceText}>${price}</AppText>
       </View>
     </View>
   );
