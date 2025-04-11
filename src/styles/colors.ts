@@ -7,6 +7,7 @@ const AppColors = {
   midGray: "#939393",
   primary: "#000",
   white: "#fff",
+  borderColor: "#ccc"
 };
 
 export { AppColors }
