@@ -1,9 +1,11 @@
-export * from './buttons/AppButton'
+export * from "./buttons/AppButton";
 
-export * from './headers/HomeHeader'
+export * from "./cards/ProductCard";
 
-export * from './inputs/AppTextInput'
+export * from "./headers/HomeHeader";
 
-export * from './texts/AppText'
+export * from "./inputs/AppTextInput";
 
-export * from './views/AppSafeView'
+export * from "./texts/AppText";
+
+export * from "./views/AppSafeView";
