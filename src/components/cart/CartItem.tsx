@@ -4,15 +4,13 @@ import { s, vs } from "react-native-size-matters";
 import { AppText } from "../texts/AppText";
 import { AppColors, AppFonts } from "../../styles";
 import { AntDesign, FontAwesome } from "@expo/vector-icons";
+import { Product } from "../../models/product.model";
+import { CartItem } from "../../models";
 
-interface CartItemProps {
-  title: string;
-  price: number;
-  imageUrl: string;
-  qty: number;
-  onDeletePress: () => void;
-  onIncreasePress: () => void;
-  onDecreasePress: () => void;
+interface CartItemProps extends CartItem {
+  onDeletePress?: () => void;
+  onIncreasePress?: () => void;
+  onDecreasePress?: () => void;
 }
 
 const CartItem = (cartItemProps: CartItemProps) => {
@@ -32,7 +30,7 @@ const CartItem = (cartItemProps: CartItemProps) => {
   } = styles;
 
   const {
-    imageUrl,
+    imageURL,
     onDecreasePress,
     onDeletePress,
     onIncreasePress,
@@ -47,7 +45,7 @@ const CartItem = (cartItemProps: CartItemProps) => {
         <Image
           style={image}
           source={{
-            uri: imageUrl,
+            uri: imageURL,
           }}
         />
       </View>
@@ -56,12 +54,12 @@ const CartItem = (cartItemProps: CartItemProps) => {
         <AppText style={titleStyle}>{title}</AppText>
         <AppText style={priceStyle}>{price}</AppText>
         <View style={qtyContainer}>
-          <Pressable style={iconButton} onPress={onIncreasePress}>
-            <FontAwesome name="plus" size={s(10)} color={AppColors.primary} />
-          </Pressable>
-          <AppText style={textQty}>{qty}</AppText>
           <Pressable style={iconButton} onPress={onDecreasePress}>
             <FontAwesome name="minus" size={s(10)} color={AppColors.primary} />
+          </Pressable>
+          <AppText style={textQty}>{qty}</AppText>
+          <Pressable style={iconButton} onPress={onIncreasePress}>
+            <FontAwesome name="plus" size={s(10)} color={AppColors.primary} />
           </Pressable>
         </View>
       </View>

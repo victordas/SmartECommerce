@@ -4,26 +4,34 @@ import { s, vs } from "react-native-size-matters";
 import { AppText } from "../texts/AppText";
 import { AppColors } from "../../styles";
 
-const TotalView = () => {
+interface TotalViewProps {
+  totalPrice: number;
+  totalShipping: number;
+  totalTax: number;
+  orderTotal: number;
+}
+
+const TotalView = (totalViewProps: TotalViewProps) => {
   const { amountStyle, rowView, separator, textStyle } = styles;
+  const { orderTotal, totalPrice, totalShipping, totalTax } = totalViewProps;
   return (
     <View>
       <View style={rowView}>
         <AppText style={textStyle}>Total price:</AppText>
-        <AppText style={amountStyle}>{`$ {}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${totalPrice}`}</AppText>
       </View>
       <View style={rowView}>
         <AppText style={textStyle}>Taxes:</AppText>
-        <AppText style={amountStyle}>{`$ {}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${totalTax}`}</AppText>
       </View>
       <View style={rowView}>
         <AppText style={textStyle}>Shipping fee:</AppText>
-        <AppText style={amountStyle}>{`$ {}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${totalShipping}`}</AppText>
       </View>
       <View style={separator}></View>
       <View style={rowView}>
         <AppText style={textStyle}>Order total:</AppText>
-        <AppText style={amountStyle}>{`$ {}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${orderTotal}`}</AppText>
       </View>
     </View>
   );
@@ -43,9 +51,9 @@ const styles = StyleSheet.create({
   },
   separator: {
     height: vs(1),
-    width: '100%',
+    width: "100%",
     backgroundColor: AppColors.blueGray,
-    marginVertical: vs(5)
+    marginVertical: vs(5),
   },
   textStyle: {
     fontSize: s(16),

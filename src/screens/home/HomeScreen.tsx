@@ -3,9 +3,12 @@ import React from 'react'
 import { AppSafeView, HomeHeader, ProductCard } from '../../components';
 import { products } from '../../data';
 import { s, vs } from 'react-native-size-matters';
+import { useDispatch } from 'react-redux';
+import { addItemToCart } from '../../store';
 
 const HomeScreen = () => {
   const { columnWrapperStyle, contentContainerStyle } = styles
+  const dispatch = useDispatch()
   return (
     <AppSafeView>
       <HomeHeader />
@@ -16,7 +19,7 @@ const HomeScreen = () => {
           imageUrl={item.imageURL}
           price={item.price.toFixed(2)}
           title={item.title}
-          onAddToCartPress={() => {}}
+          onAddToCartPress={() => {dispatch(addItemToCart(item))}}
         />}
         numColumns={2}
         columnWrapperStyle={columnWrapperStyle}
