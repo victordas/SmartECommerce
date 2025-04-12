@@ -4,10 +4,11 @@ const AppColors = {
   blueGray: "#e6e8ea",
   disableGray: "#d3d3d3",
   lightGray: "#f0f0f0",
-  midGray: "#939393",
+  medGray: "#939393",
   primary: "#000",
   white: "#fff",
-  borderColor: "#ccc"
+  borderColor: "#ccc",
+  redColor: 'red'
 };
 
 export { AppColors }
