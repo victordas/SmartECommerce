@@ -3,7 +3,7 @@ export * from "./buttons/ProfileSectionButton";
 
 export * from "./cards/ProductCard";
 
-export * from "./cart/CartItem";
+export * from "./cart/CartItemView";
 export * from "./cart/TotalView";
 
 export * from "./headers/HomeHeader";

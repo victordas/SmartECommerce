@@ -4,7 +4,7 @@ export const products = [
     price: 1199,
     title: "iPhone 16 Pro Max",
     shippingCharge: 49,
-    taxRate: 18, 
+    taxRate: 18,
     imageURL:
       "https://2b.com.eg/media/catalog/product/cache/661473ab953cdcdf4c3b607144109b90/m/a/ma658.jpg",
   },
@@ -13,7 +13,7 @@ export const products = [
     price: 749,
     title: "Lenovo Laptop",
     shippingCharge: 20,
-    taxRate: 10, 
+    taxRate: 10,
     imageURL:
       "https://image.made-in-china.com/318f0j00nEfGPdYIhWom/6%E6%9C%8814%E6%97%A5%287%29.mp4.webp",
   },
@@ -22,7 +22,7 @@ export const products = [
     price: 1799,
     title: "Mac Book Pro 15",
     shippingCharge: 49,
-    taxRate: 18, 
+    taxRate: 18,
     imageURL:
       "https://image.made-in-china.com/2f0j00CTdkRwQaYmzE/2023-Latest-Original-Good-Quality-Laptop-for-Book-15-2023-Laptop.webp",
   },
@@ -31,7 +31,7 @@ export const products = [
     price: 1299,
     title: "Samsung Phone",
     shippingCharge: 0,
-    taxRate: 18, 
+    taxRate: 18,
     imageURL:
       "https://d1b5h9psu9yexj.cloudfront.net/60226/Samsung-Galaxy-S24_20240319-183738_full.jpeg",
   },
@@ -40,7 +40,7 @@ export const products = [
     price: 59,
     title: "Logitech Mouse",
     shippingCharge: 0,
-    taxRate: 10, 
+    taxRate: 10,
     imageURL:
       "https://media.ldlc.com/r374/ld/products/00/05/88/25/LD0005882564_1.jpg",
   },
@@ -49,7 +49,7 @@ export const products = [
     price: 99,
     title: "Logitech Headset",
     shippingCharge: 0,
-    taxRate: 10, 
+    taxRate: 10,
     imageURL:
       "https://resource.logitech.com/b_white/content/dam/logitech/en/products/headsets/zone-900/gallery/logitech-zone-900-gallery-1.png",
   },
@@ -58,7 +58,8 @@ export const products = [
     price: 79,
     title: "Logitech Camera ",
     shippingCharge: 0,
-    taxRate: 10, 
-    imageURL: "https://resource.logitech.com/content/dam/logitech/en/products/webcams/c310/gallery/c310-gallery-1.png",
+    taxRate: 10,
+    imageURL:
+      "https://resource.logitech.com/content/dam/logitech/en/products/webcams/c310/gallery/c310-gallery-1.png",
   },
 ];

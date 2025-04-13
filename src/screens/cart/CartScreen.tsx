@@ -3,7 +3,7 @@ import React from "react";
 import {
   AppButton,
   AppSafeView,
-  CartItem,
+  CartItemView,
   HomeHeader,
   TotalView,
 } from "../../components";
@@ -11,10 +11,13 @@ import { EmptyCart } from "./EmptyCart";
 import { useNavigation } from "@react-navigation/native";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addItemToCart,
   removeItemFromCart,
   removeProductFromCart,
   RootState,
 } from "../../store";
+import { sharedPaddingHorizontal } from "../../styles";
+import { vs } from "react-native-size-matters";
 
 const CartScreen = () => {
   const { navigate } = useNavigation();
@@ -22,16 +25,16 @@ const CartScreen = () => {
   const dispatch = useDispatch();
 
   const totalShipping = cartItems.reduce(
-    (totalShipping, { shippingCharge }) => totalShipping + shippingCharge,
+    (totalShipping, { shippingCharge, qty }) => totalShipping + (shippingCharge * qty),
     0
   );
   const totalTax = cartItems.reduce(
-    (totalShipping, { price, taxRate }) =>
-      totalShipping + price * (taxRate / 100),
+    (totalShipping, { price, taxRate, qty }) =>
+      totalShipping + (price * (taxRate / 100) * qty),
     0
   );
   const totalPrice = cartItems.reduce(
-    (totalPrice, { price }) => totalPrice + price,
+    (totalPrice, { sum }) => totalPrice + sum,
     0
   );
 
@@ -41,6 +44,8 @@ const CartScreen = () => {
     totalTax,
     orderTotal: totalPrice + totalShipping + totalTax,
   };
+
+  console.log(totalViewValues)
   return cartItems.length ? (
     <AppSafeView>
       <HomeHeader />
@@ -49,7 +54,7 @@ const CartScreen = () => {
         data={cartItems}
         keyExtractor={(item) => `${item.id}`}
         renderItem={({ item }) => (
-          <CartItem
+          <CartItemView
             {...item}
             onDecreasePress={() => {
               dispatch(removeItemFromCart(item));
@@ -58,14 +63,14 @@ const CartScreen = () => {
               dispatch(removeProductFromCart(item));
             }}
             onIncreasePress={() => {
-              dispatch(removeItemFromCart(item));
+              dispatch(addItemToCart(item));
             }}
           />
         )}
         showsVerticalScrollIndicator={false}
       />
       <TotalView {...totalViewValues} />
-      <AppButton title="Continue" onPress={() => navigate("CheckoutScreen")} />
+      <AppButton title="Continue" onPress={() => navigate("CheckoutScreen")} style={{width: "80%", marginBottom: vs(8)}} />
     </AppSafeView>
   ) : (<EmptyCart />);
 };

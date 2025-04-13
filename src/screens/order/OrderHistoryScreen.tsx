@@ -1,14 +1,15 @@
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import React from "react";
-import { OrderHistoryItem } from "../../components";
+import { AppButton, AppSafeView, OrderHistoryItem } from "../../components";
+import { sharedPaddingHorizontal } from "../../styles";
 
 const OrderHistoryScreen = () => {
   return (
     <AppSafeView>
       <View style={{ paddingHorizontal: sharedPaddingHorizontal }}>
         <FlatList
-          data={}
-          keyExtractor={}
+          data={[]}
+          keyExtractor={(item: any) => `${item.id}`}
           renderItem={(({item}) => (
             <OrderHistoryItem />
           ))}

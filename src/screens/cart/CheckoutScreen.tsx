@@ -62,8 +62,8 @@ const CheckoutScreen = () => {
         </View>
       </View>
 
-      <View>
-        <AppButton title="Confirm" onPress={() => {handleSubmit(saveOrder)}} />
+      <View style={bottomButtonContainer}>
+        <AppButton title="Confirm" onPress={() => {handleSubmit(saveOrder)()}} />
       </View>
     </AppSafeView>
   );

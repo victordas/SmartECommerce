@@ -12,10 +12,10 @@ const cartSlice = createSlice({
     // Add item to cart
     addItemToCart: (state, action) => {
       const { cartItems } = state;
-      const cartItem = cartItems.find(({ id }) => id === action.payload.id);
-      if (cartItem) {
-        cartItem.qty += 1;
-        cartItem.sum += cartItem.price;
+      const idx = cartItems.findIndex(({id}) => action.payload.id === id)
+      if (idx >= 0) {
+        cartItems[idx].qty += 1;
+        cartItems[idx].sum +=  cartItems[idx].price;
         state.cartItems = [...cartItems]
       } else {
         state.cartItems.push({

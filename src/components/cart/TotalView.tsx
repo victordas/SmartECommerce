@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { s, vs } from "react-native-size-matters";
 import { AppText } from "../texts/AppText";
-import { AppColors } from "../../styles";
+import { AppColors, sharedPaddingHorizontal } from "../../styles";
 
 interface TotalViewProps {
   totalPrice: number;
@@ -15,23 +15,23 @@ const TotalView = (totalViewProps: TotalViewProps) => {
   const { amountStyle, rowView, separator, textStyle } = styles;
   const { orderTotal, totalPrice, totalShipping, totalTax } = totalViewProps;
   return (
-    <View>
+    <View style={{paddingHorizontal: sharedPaddingHorizontal}}>
       <View style={rowView}>
         <AppText style={textStyle}>Total price:</AppText>
-        <AppText style={amountStyle}>{`$ ${totalPrice}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${totalPrice.toFixed(2)}`}</AppText>
       </View>
       <View style={rowView}>
         <AppText style={textStyle}>Taxes:</AppText>
-        <AppText style={amountStyle}>{`$ ${totalTax}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${totalTax.toFixed(2)}`}</AppText>
       </View>
       <View style={rowView}>
         <AppText style={textStyle}>Shipping fee:</AppText>
-        <AppText style={amountStyle}>{`$ ${totalShipping}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${totalShipping.toFixed(2)}`}</AppText>
       </View>
       <View style={separator}></View>
       <View style={rowView}>
         <AppText style={textStyle}>Order total:</AppText>
-        <AppText style={amountStyle}>{`$ ${orderTotal}`}</AppText>
+        <AppText style={amountStyle}>{`$ ${orderTotal.toFixed(2)}`}</AppText>
       </View>
     </View>
   );

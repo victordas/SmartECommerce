@@ -13,7 +13,7 @@ interface CartItemProps extends CartItem {
   onDecreasePress?: () => void;
 }
 
-const CartItem = (cartItemProps: CartItemProps) => {
+const CartItemView = (cartItemProps: CartItemProps) => {
   const {
     container,
     deleteButton,
@@ -74,7 +74,7 @@ const CartItem = (cartItemProps: CartItemProps) => {
   );
 };
 
-export { CartItem };
+export { CartItemView };
 
 const styles = StyleSheet.create({
   container: {
@@ -82,13 +82,14 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingBottom: vs(4),
     borderColor: AppColors.blueGray,
+    flexDirection: 'row',
   },
   deleteButton: {
     flexDirection: "row",
     alignItems: "center",
   },
   deleteButtonContainer: {
-    flex: 1,
+    flex: 1.5,
     justifyContent: "flex-end",
     paddingEnd: s(12),
   },
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     borderRadius: s(5),
   },
   imageContainer: {
-    flex: 1.5,
+    flex: 2.5,
     justifyContent: "center",
     alignItems: "center",
   },
