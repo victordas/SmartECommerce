@@ -17,6 +17,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../../config";
 import { showMessage } from "react-native-flash-message";
+import { useDispatch } from "react-redux";
+import { setuserData } from "../../store";
 
 const signInSchema = yup.object({
   email: yup
@@ -42,13 +44,16 @@ const SignInScreen = () => {
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(signInSchema),
   });
+  const dispatch = useDispatch()
   const signIn = async (formData: SignInFormDataType) => {
     try {
-      const userCredential = await signInWithEmailAndPassword(
+      const { user } = await signInWithEmailAndPassword(
         firebaseAuth,
         formData.email,
         formData.password
       );
+      const { uid, email, photoURL, displayName, emailVerified } = user
+      dispatch(setuserData({ uid, email, photoURL, displayName, emailVerified }))
       navigate("MainAppBottomTabs");
     } catch (error: any) {
       let message = "";

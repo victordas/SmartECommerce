@@ -45,7 +45,6 @@ const CartScreen = () => {
     orderTotal: totalPrice + totalShipping + totalTax,
   };
 
-  console.log(totalViewValues)
   return cartItems.length ? (
     <AppSafeView>
       <HomeHeader />

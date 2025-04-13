@@ -17,6 +17,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../../config";
 import { showMessage } from "react-native-flash-message";
+import { useDispatch } from "react-redux";
+import { setuserData } from "../../store";
 
 const signUpSchema = yup.object({
   email: yup
@@ -48,9 +50,10 @@ const SignUpScreen = () => {
   const { control, handleSubmit } = useForm({
     resolver: yupResolver(signUpSchema),
   });
+  const dispatch = useDispatch();
   const signUp = async (formData: SignUpFormDataType) => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
+      const { user } = await createUserWithEmailAndPassword(
         firebaseAuth,
         formData.email,
         formData.password
@@ -59,8 +62,11 @@ const SignUpScreen = () => {
         type: "success",
         message: "User created",
       });
+      const { uid, email, photoURL, displayName, emailVerified } = user;
+      dispatch(
+        setuserData({ uid, email, photoURL, displayName, emailVerified })
+      );
       navigate("MainAppBottomTabs");
-      return userCredential.user;
     } catch (error: any) {
       let message = "";
       if (error.code === "auth/email-already-in-use") {

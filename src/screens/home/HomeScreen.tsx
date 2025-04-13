@@ -25,7 +25,7 @@ const HomeScreen = () => {
       <FlatList
         data={products}
         keyExtractor={(item) => `${item.id}`}
-        renderItem={({ item }) => (
+        renderItem={({item}) => (
           <ProductCard
             imageUrl={item.imageURL}
             price={item.price.toFixed(2)}

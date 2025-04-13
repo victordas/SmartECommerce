@@ -11,7 +11,7 @@ export * from "./headers/HomeHeader";
 export * from "./inputs/AppTextInput";
 export * from "./inputs/AppTextInputController";
 
-export * from "./order/OrderHistoryItem";
+export * from "./order/OrderHistoryItemView";
 
 export * from "./texts/AppText";
 

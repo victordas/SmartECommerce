@@ -1,24 +1,32 @@
 import { FlatList, StyleSheet, View } from "react-native";
-import React from "react";
-import { AppButton, AppSafeView, OrderHistoryItem } from "../../components";
+import React, { useEffect, useState } from "react";
+import { AppButton, AppSafeView, OrderHistoryItemView } from "../../components";
 import { sharedPaddingHorizontal } from "../../styles";
+import { getUserOrders } from "../../data";
+import { OrderHistoryItem } from "../../models";
 
 const OrderHistoryScreen = () => {
+  const [orders, setOrders] = useState<OrderHistoryItem[]>([]);
+  const fetchOrders = async () => {
+    const userOrders = (await getUserOrders()) || [];
+    setOrders(userOrders)
+  };
+  useEffect(() => {
+    fetchOrders();
+  }, []);
   return (
     <AppSafeView>
       <View style={{ paddingHorizontal: sharedPaddingHorizontal }}>
         <FlatList
-          data={[]}
-          keyExtractor={(item: any) => `${item.id}`}
-          renderItem={(({item}) => (
-            <OrderHistoryItem />
-          ))}
+          data={orders}
+          keyExtractor={order => order.id}
+          renderItem={({ item }) => (
+            <OrderHistoryItemView
+            {...item}
+            />
+          )}
           showsVerticalScrollIndicator={false}
-         />
-      </View>
-
-      <View >
-        <AppButton title="Confirm" onPress={() => {}} />
+        />
       </View>
     </AppSafeView>
   );

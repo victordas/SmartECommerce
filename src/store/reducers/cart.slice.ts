@@ -51,6 +51,6 @@ const cartSlice = createSlice({
 });
 
 const { actions, reducer: cartRecucer } = cartSlice;
-const { addItemToCart, removeItemFromCart, removeProductFromCart } = actions;
+const { addItemToCart, removeItemFromCart, removeProductFromCart, clearCart } = actions;
 
-export { addItemToCart, cartRecucer, removeItemFromCart, removeProductFromCart };
+export { addItemToCart, cartRecucer, clearCart, removeItemFromCart, removeProductFromCart };

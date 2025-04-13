@@ -1,3 +1,5 @@
 export * from './cart-item.model'
 export * from './cart-state.model'
 export * from './product.model'
+export * from './user.state.model'
+export * from './order-history-item.model'

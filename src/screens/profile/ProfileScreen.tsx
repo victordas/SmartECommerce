@@ -9,20 +9,26 @@ import {
 import { sharedPaddingHorizontal } from "../../styles";
 import { s, vs } from "react-native-size-matters";
 import { useNavigation } from "@react-navigation/native";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const ProfileScreen = () => {
-  const { navigate } = useNavigation()
+  const { userData } = useSelector((state: RootState) => state.userReducer);
+  const { navigate } = useNavigation();
   return (
     <AppSafeView>
       <HomeHeader />
-      <AppText
-        variant="bold"
-        style={{ fontSize: s(18), marginTop: vs(10) }}
-      >{`Hello! ${""} `}</AppText>
       <View style={{ paddingHorizontal: sharedPaddingHorizontal }}>
-        <ProfileSectionButton title={"My orders"} />
+        <ProfileSectionButton title={"My orders"} onPress={() => {
+            navigate("OrderHistoryScreen");
+          }}/>
         <ProfileSectionButton title={"Language"} />
-        <ProfileSectionButton title={"Logout"} onPress={() => { navigate('SignInScreen') }} />
+        <ProfileSectionButton
+          title={"Logout"}
+          onPress={() => {
+            navigate("SignInScreen");
+          }}
+        />
       </View>
     </AppSafeView>
   );
